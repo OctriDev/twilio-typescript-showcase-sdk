@@ -30,6 +30,8 @@ export interface WireField {
   wire: string;
   type?: string;
   fields?: WireSchema;
+  /** An integer the response parser read as a bigint because another schema's uint64 shares its key. */
+  number?: true;
 }
 export type WireSchema = Record<string, WireField>;
 
@@ -81,7 +83,8 @@ function remapShape(value: unknown, schema: WireSchema, direction: "toWire" | "f
       setOwn(field.wire, nested(source[from]));
     } else {
       if (!hasOwn(field.wire)) continue;
-      setOwn(sdkKey, nested(source[field.wire]));
+      const raw = source[field.wire];
+      setOwn(sdkKey, field.number && typeof raw === "bigint" ? Number(raw) : nested(raw));
     }
   }
   return out;

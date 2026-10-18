@@ -306,15 +306,19 @@ export const matchesExpected = (actual, expected, echoed = new Set()) => {
 // results array instead of against the envelope itself.
 export const matchesPagedExpected = (actual, expected, echoed = new Set()) => {
   if (expected === null || typeof expected !== "object") return false;
-  const results = Object.values(expected).find((value) => Array.isArray(value));
-  if (!Array.isArray(results)) return false;
   const items = Array.isArray(actual) ? actual : [actual];
-  // An envelope stating an empty page is matched by yielding nothing. Reading
-  // that as a failure would mark every endpoint whose authored example carries
-  // no rows as broken.
-  if (results.length === 0) return items.length === 0;
-  if (items.length === 0) return false;
-  return items.every((item) =>
-    results.some((candidate) => matchesExpected(item, candidate, echoed)),
-  );
+  // The page is whichever array the envelope carries the items in: Neon's
+  // bucket listing puts `folders` before `objects`. An envelope stating an
+  // empty page is matched by yielding nothing. Reading that as a failure would
+  // mark every endpoint whose authored example carries no rows as broken.
+  return Object.values(expected)
+    .filter((value) => Array.isArray(value))
+    .some((results) =>
+      results.length === 0
+        ? items.length === 0
+        : items.length > 0 &&
+          items.every((item) =>
+            results.some((candidate) => matchesExpected(item, candidate, echoed)),
+          ),
+    );
 };
