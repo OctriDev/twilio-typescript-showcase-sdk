@@ -18,10 +18,24 @@ const exactResponses = JSON.parse(fixtureText, (_key, value, context) =>
     : value,
 ).cases.map((item) => item.response?.value);
 
-// Each integer compares at the precision the SDK decoded it: a uint64 as an
-// exact bigint, every other integer as a double.
+// A request integer travels as a double, the type an int64 field declares here,
+// so a JSON body whose example lies past 2^53 (DigitalOcean's Kafka limits are
+// int64 max) is expected at that precision.
+const atSentPrecision = (text) => {
+  if (!/\d{16,}/.test(text)) return text;
+  try {
+    return JSON.stringify(JSON.parse(text));
+  } catch {
+    return text;
+  }
+};
+
+// Each integer compares at the precision the request layer decoded it. That
+// layer has no schema, so it reads a key declared uint64 anywhere as an exact
+// bigint and every other integer as a double.
 const atDecodedPrecision = (expected, actual) => {
-  if (typeof expected === "bigint") return typeof actual === "bigint" ? expected : Number(expected);
+  if (typeof actual === "bigint") return typeof expected === "number" ? BigInt(expected) : expected;
+  if (typeof expected === "bigint") return Number(expected);
   if (Array.isArray(expected))
     return expected.map((item, index) => atDecodedPrecision(item, actual?.[index]));
   if (expected !== null && typeof expected === "object")
@@ -191,7 +205,11 @@ test("replays every generated behavior case through the request layer", async (t
             assert.equal(sent[name], value, "header " + name);
           }
           if (item.expect.bodyText !== null) {
-            assert.equal(String(seen.body ?? ""), item.expect.bodyText, "request body");
+            assert.equal(
+              String(seen.body ?? ""),
+              atSentPrecision(item.expect.bodyText),
+              "request body",
+            );
           }
           if (item.expect.multipartFields !== null) {
             assert.ok(
