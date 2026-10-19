@@ -4,20 +4,6 @@
 import type { WireSchema } from "./client";
 
 export const wireSchemasPart3: Record<string, WireSchema> = {
-  "listAvailablePhoneNumbersVoip response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    availablePhoneNumbers: {
-      wire: "available_phone_numbers",
-      type: "ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip",
-    },
-  },
   "listCallsRecordings response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
@@ -29,7 +15,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     uri: { wire: "uri" },
     recordings: { wire: "recordings", type: "ApiV2010AccountCallCallRecording" },
   },
-  "listConferencesRecordings response": {
+  "listCallsNotifications response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -38,7 +24,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    recordings: { wire: "recordings", type: "ApiV2010AccountConferenceConferenceRecording" },
+    notifications: { wire: "notifications", type: "ApiV2010AccountCallCallNotification" },
   },
   "listConnectApps response": {
     end: { wire: "end" },
@@ -51,7 +37,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     uri: { wire: "uri" },
     connectApps: { wire: "connect_apps", type: "ApiV2010AccountConnectApp" },
   },
-  "listSigningKeys response": {
+  "listKeys response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -60,7 +46,18 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    signingKeys: { wire: "signing_keys", type: "ApiV2010AccountSigningKey" },
+    keys: { wire: "keys", type: "ApiV2010AccountKey" },
+  },
+  "listConferencesParticipants response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    participants: { wire: "participants", type: "ApiV2010AccountConferenceParticipant" },
   },
   "listOutgoingCallerIds response": {
     end: { wire: "end" },
@@ -73,7 +70,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     uri: { wire: "uri" },
     outgoingCallerIds: { wire: "outgoing_caller_ids", type: "ApiV2010AccountOutgoingCallerId" },
   },
-  "listNotifications response": {
+  "listSigningKeys response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -82,7 +79,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    notifications: { wire: "notifications", type: "ApiV2010AccountNotification" },
+    signingKeys: { wire: "signing_keys", type: "ApiV2010AccountSigningKey" },
   },
   "listShortCodes response": {
     end: { wire: "end" },
@@ -95,7 +92,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     uri: { wire: "uri" },
     shortCodes: { wire: "short_codes", type: "ApiV2010AccountShortCode" },
   },
-  "listKeys response": {
+  "listNotifications response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -104,7 +101,18 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    keys: { wire: "keys", type: "ApiV2010AccountKey" },
+    notifications: { wire: "notifications", type: "ApiV2010AccountNotification" },
+  },
+  "listTranscriptions response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    transcriptions: { wire: "transcriptions", type: "ApiV2010AccountTranscription" },
   },
   "listUsageRecords response": {
     end: { wire: "end" },
@@ -240,17 +248,6 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     uri: { wire: "uri" },
     usageTriggers: { wire: "usage_triggers", type: "ApiV2010AccountUsageUsageTrigger" },
   },
-  "listTranscriptions response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    transcriptions: { wire: "transcriptions", type: "ApiV2010AccountTranscription" },
-  },
   "listIncomingPhoneNumbersAssignedAddOnsExtensions response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
@@ -265,7 +262,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
       type: "ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOnIncomingPhoneNumberAssignedAddOnExtension",
     },
   },
-  "listSipDomainsAuthCallsIpAccessControlListMappings response": {
+  "listSipDomainsCredentialListMappings response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -274,9 +271,9 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    contents: {
-      wire: "contents",
-      type: "ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping",
+    credentialListMappings: {
+      wire: "credential_list_mappings",
+      type: "ApiV2010AccountSipSipDomainSipCredentialListMapping",
     },
   },
   "listSipCredentialListsCredentials response": {
@@ -304,7 +301,7 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
       type: "ApiV2010AccountSipSipIpAccessControlListSipIpAddress",
     },
   },
-  "listSipDomainsCredentialListMappings response": {
+  "listSipDomainsAuthCallsCredentialListMappings response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -313,9 +310,9 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    credentialListMappings: {
-      wire: "credential_list_mappings",
-      type: "ApiV2010AccountSipSipDomainSipCredentialListMapping",
+    contents: {
+      wire: "contents",
+      type: "ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping",
     },
   },
   "listSipDomainsIpAccessControlListMappings response": {
@@ -332,20 +329,6 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
       type: "ApiV2010AccountSipSipDomainSipIpAccessControlListMapping",
     },
   },
-  "listSipDomainsAuthCallsCredentialListMappings response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    contents: {
-      wire: "contents",
-      type: "ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsCredentialListMapping",
-    },
-  },
   "listSipDomainsAuthRegistrationsCredentialListMappings response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
@@ -358,6 +341,20 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     contents: {
       wire: "contents",
       type: "ApiV2010AccountSipSipDomainSipAuthSipAuthRegistrationsSipAuthRegistrationsCredentialListMapping",
+    },
+  },
+  "listSipDomainsAuthCallsIpAccessControlListMappings response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    contents: {
+      wire: "contents",
+      type: "ApiV2010AccountSipSipDomainSipAuthSipAuthCallsSipAuthCallsIpAccessControlListMapping",
     },
   },
   "listAddresses response": {
@@ -418,6 +415,17 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
       type: "ApiV2010AccountIncomingPhoneNumberIncomingPhoneNumberAssignedAddOn",
     },
   },
+  "listSipCredentialLists response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    credentialLists: { wire: "credential_lists", type: "ApiV2010AccountSipSipCredentialList" },
+  },
   "listSipIpAccessControlLists response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
@@ -431,28 +439,6 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
       wire: "ip_access_control_lists",
       type: "ApiV2010AccountSipSipIpAccessControlList",
     },
-  },
-  "listSipCredentialLists response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    credentialLists: { wire: "credential_lists", type: "ApiV2010AccountSipSipCredentialList" },
-  },
-  "listConferences response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    conferences: { wire: "conferences", type: "ApiV2010AccountConference" },
   },
   "listCalls response": {
     end: { wire: "end" },
@@ -475,6 +461,17 @@ export const wireSchemasPart3: Record<string, WireSchema> = {
     start: { wire: "start" },
     uri: { wire: "uri" },
     domains: { wire: "domains", type: "ApiV2010AccountSipSipDomain" },
+  },
+  "listConferences response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    conferences: { wire: "conferences", type: "ApiV2010AccountConference" },
   },
   "listRecordings response": {
     end: { wire: "end" },

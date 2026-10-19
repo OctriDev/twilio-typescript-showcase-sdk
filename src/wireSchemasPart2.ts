@@ -390,17 +390,6 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     status: { wire: "status" },
     callerIdSid: { wire: "caller_id_sid" },
   },
-  "listCallsEvents response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    events: { wire: "events", type: "ApiV2010AccountCallCallEvent" },
-  },
   "listAddressesDependentPhoneNumbers response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
@@ -415,7 +404,7 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
       type: "ApiV2010AccountAddressDependentPhoneNumber",
     },
   },
-  "listConferencesParticipants response": {
+  "listCallsEvents response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -424,7 +413,18 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    participants: { wire: "participants", type: "ApiV2010AccountConferenceParticipant" },
+    events: { wire: "events", type: "ApiV2010AccountCallCallEvent" },
+  },
+  "listConferencesRecordings response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    recordings: { wire: "recordings", type: "ApiV2010AccountConferenceConferenceRecording" },
   },
   "listMessagesMedia response": {
     end: { wire: "end" },
@@ -436,17 +436,6 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     start: { wire: "start" },
     uri: { wire: "uri" },
     mediaList: { wire: "media_list", type: "ApiV2010AccountMessageMedia" },
-  },
-  "listQueuesMembers response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    queueMembers: { wire: "queue_members", type: "ApiV2010AccountQueueMember" },
   },
   "listRecordingsTranscriptions response": {
     end: { wire: "end" },
@@ -462,6 +451,17 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
       type: "ApiV2010AccountRecordingRecordingTranscription",
     },
   },
+  "listQueuesMembers response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    queueMembers: { wire: "queue_members", type: "ApiV2010AccountQueueMember" },
+  },
   "listRecordingsAddOnResultsPayloads response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
@@ -474,20 +474,6 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     payloads: {
       wire: "payloads",
       type: "ApiV2010AccountRecordingRecordingAddOnResultRecordingAddOnResultPayload",
-    },
-  },
-  "listAuthorizedConnectApps response": {
-    end: { wire: "end" },
-    firstPageUri: { wire: "first_page_uri" },
-    nextPageUri: { wire: "next_page_uri" },
-    page: { wire: "page" },
-    pageSize: { wire: "page_size" },
-    previousPageUri: { wire: "previous_page_uri" },
-    start: { wire: "start" },
-    uri: { wire: "uri" },
-    authorizedConnectApps: {
-      wire: "authorized_connect_apps",
-      type: "ApiV2010AccountAuthorizedConnectApp",
     },
   },
   "listAccounts response": {
@@ -512,7 +498,7 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     uri: { wire: "uri" },
     applications: { wire: "applications", type: "ApiV2010AccountApplication" },
   },
-  "listCallsNotifications response": {
+  "listAuthorizedConnectApps response": {
     end: { wire: "end" },
     firstPageUri: { wire: "first_page_uri" },
     nextPageUri: { wire: "next_page_uri" },
@@ -521,7 +507,10 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     previousPageUri: { wire: "previous_page_uri" },
     start: { wire: "start" },
     uri: { wire: "uri" },
-    notifications: { wire: "notifications", type: "ApiV2010AccountCallCallNotification" },
+    authorizedConnectApps: {
+      wire: "authorized_connect_apps",
+      type: "ApiV2010AccountAuthorizedConnectApp",
+    },
   },
   "listAvailablePhoneNumbersLocal response": {
     end: { wire: "end" },
@@ -605,6 +594,20 @@ export const wireSchemasPart2: Record<string, WireSchema> = {
     availablePhoneNumbers: {
       wire: "available_phone_numbers",
       type: "ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberTollFree",
+    },
+  },
+  "listAvailablePhoneNumbersVoip response": {
+    end: { wire: "end" },
+    firstPageUri: { wire: "first_page_uri" },
+    nextPageUri: { wire: "next_page_uri" },
+    page: { wire: "page" },
+    pageSize: { wire: "page_size" },
+    previousPageUri: { wire: "previous_page_uri" },
+    start: { wire: "start" },
+    uri: { wire: "uri" },
+    availablePhoneNumbers: {
+      wire: "available_phone_numbers",
+      type: "ApiV2010AccountAvailablePhoneNumberCountryAvailablePhoneNumberVoip",
     },
   },
 };
