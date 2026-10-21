@@ -6,7 +6,7 @@ import type { ClientConfig, RequestOptions } from "../../client";
 import { encodePathSegment, fromWire, sdkDecode, sdkRequest } from "../../client";
 import { validateLength, validatePattern, validateUri } from "../../validation";
 
-export interface CreateCallsUserDefinedMessageSubscriptionsParams {
+export interface CreateCallUserDefinedMessageSubscriptionParams {
   accountSid: string;
   callSid: string;
   callback: string;
@@ -32,7 +32,7 @@ export interface CreateCallsUserDefinedMessageSubscriptionsParams {
  * @param method - The HTTP method Twilio will use when requesting the above
  *   `Url`. Either `GET` or `POST`. Default is `POST`.
  */
-export async function createCallsUserDefinedMessageSubscriptions(
+export async function createCallUserDefinedMessageSubscription(
   config: ClientConfig,
   {
     accountSid,
@@ -40,7 +40,7 @@ export async function createCallsUserDefinedMessageSubscriptions(
     callback,
     idempotencyKey,
     method,
-  }: CreateCallsUserDefinedMessageSubscriptionsParams,
+  }: CreateCallUserDefinedMessageSubscriptionParams,
   requestOptions?: RequestOptions,
 ): Promise<ApiV2010AccountCallUserDefinedMessageSubscription> {
   validateLength("AccountSid", accountSid, { min: 34, max: 34 });
@@ -54,7 +54,7 @@ export async function createCallsUserDefinedMessageSubscriptions(
   const _resp = await sdkRequest<ApiV2010AccountCallUserDefinedMessageSubscription>({
     method: "POST",
     path: `/2010-04-01/Accounts/${encodePathSegment(accountSid)}/Calls/${encodePathSegment(callSid)}/UserDefinedMessageSubscriptions.json`,
-    operationId: "createCallsUserDefinedMessageSubscriptions",
+    operationId: "createCallUserDefinedMessageSubscription",
     responseDecoder: "json",
     ...requestOptions,
     body: {
@@ -127,10 +127,10 @@ export class CallsUserDefinedMessageSubscriptionsNamespace {
    * Subscribe to User Defined Messages for a given Call SID.
    */
   create(
-    params: CreateCallsUserDefinedMessageSubscriptionsParams,
+    params: CreateCallUserDefinedMessageSubscriptionParams,
     requestOptions?: RequestOptions,
-  ): ReturnType<typeof createCallsUserDefinedMessageSubscriptions> {
-    return createCallsUserDefinedMessageSubscriptions(this._config, params, requestOptions);
+  ): ReturnType<typeof createCallUserDefinedMessageSubscription> {
+    return createCallUserDefinedMessageSubscription(this._config, params, requestOptions);
   }
   /**
    * Delete a specific User Defined Message Subscription.

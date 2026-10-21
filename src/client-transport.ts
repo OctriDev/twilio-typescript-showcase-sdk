@@ -410,7 +410,7 @@ const OPERATION_SECURITY: Readonly<Record<string, readonly (readonly string[])[]
 
   createCallsUserDefinedMessages: [["accountSid_authToken"]],
 
-  createCallsUserDefinedMessageSubscriptions: [["accountSid_authToken"]],
+  createCallUserDefinedMessageSubscription: [["accountSid_authToken"]],
 
   deleteCallsUserDefinedMessageSubscriptions: [["accountSid_authToken"]],
 };
