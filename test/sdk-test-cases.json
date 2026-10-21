@@ -8734,8 +8734,8 @@
     "source": "media-examples"
   },
   {
-    "id": "authored-createCallsUserDefinedMessageSubscriptions-201-application/json",
-    "operationId": "createCallsUserDefinedMessageSubscriptions",
+    "id": "authored-createCallUserDefinedMessageSubscription-201-application/json",
+    "operationId": "createCallUserDefinedMessageSubscription",
     "method": "POST",
     "path": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions.json",
     "kinds": ["json-response"],

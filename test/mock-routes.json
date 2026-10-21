@@ -8057,7 +8057,7 @@
     "errorModels": {}
   },
   {
-    "operationId": "createCallsUserDefinedMessageSubscriptions",
+    "operationId": "createCallUserDefinedMessageSubscription",
     "summary": "Subscribe to User Defined Messages for a given Call SID.",
     "method": "POST",
     "pathTemplate": "/2010-04-01/Accounts/{AccountSid}/Calls/{CallSid}/UserDefinedMessageSubscriptions.json",
